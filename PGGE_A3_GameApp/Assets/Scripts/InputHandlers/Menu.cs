@@ -20,13 +20,13 @@ public class Menu : MonoBehaviour
     public void OnClickSinglePlayer()
     {
         //Debug.Log("Loading singleplayer game");
-        SceneManager.LoadScene("SinglePlayer");
+        SceneManager.LoadScene("SingleplayerMap00");
     }
 
     public void OnClickMultiPlayer()
     {
         //Debug.Log("Loading multiplayer game");
-        SceneManager.LoadScene("Multiplayer_Launcher");
+        SceneManager.LoadScene("MultiplayerLobby");
     }
 
 }
