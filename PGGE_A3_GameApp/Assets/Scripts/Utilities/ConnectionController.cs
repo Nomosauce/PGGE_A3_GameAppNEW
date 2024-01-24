@@ -22,6 +22,8 @@ namespace PGGE
 
             bool isConnecting = false;
 
+            [SerializeField] private AudioSource lobbyJoinSFX;
+
             void Awake()
             {
                 // this makes sure we can use PhotonNetwork.LoadLevel() on 
@@ -39,6 +41,8 @@ namespace PGGE
 
             public void Connect()
             {
+                lobbyJoinSFX.Play();
+
                 mBtnJoinRoom.SetActive(false);
                 mInpPlayerName.SetActive(false);
                 mConnectionProgress.SetActive(true);
