@@ -18,6 +18,8 @@ namespace PGGE
             public GameObject mBtnJoinRoom;
             public GameObject mInpPlayerName;
 
+            public GameObject BtnLobbyBack;
+
             bool isConnecting = false;
 
             void Awake()
@@ -40,6 +42,8 @@ namespace PGGE
                 mBtnJoinRoom.SetActive(false);
                 mInpPlayerName.SetActive(false);
                 mConnectionProgress.SetActive(true);
+
+                BtnLobbyBack.SetActive(false);
 
                 // we check if we are connected or not, we join if we are, 
                 // else we initiate the connection to the server.

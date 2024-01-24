@@ -13,13 +13,13 @@ public class PlayerNameInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mInputField = GetComponent<InputField>(); //refactoring comment: "this." was removed as "this." is typically used to refer to a current instance of an object, 
-                                                  //however, GetComponent already operates on the current instance so "this." is redundant.
+        mInputField = GetComponent<InputField>(); //(refactoring comment: "this." was removed as "this." is typically used to refer to a current instance of an object, 
+                                                  //however, GetComponent already operates on the current instance so "this." is redundant.)
 
         string defaultName = string.Empty;
 
-        if (mInputField != null && PlayerPrefs.HasKey(playerNamePrefKey)) //refactoring comment: the code in the if statement only runs only if it meets these two conditions,
-                                                                          //instead of having an if statement in an if statement, it can be simplified with && which checks if both conditions are met in a line
+        if (mInputField != null && PlayerPrefs.HasKey(playerNamePrefKey)) //(refactoring comment: the code in the if statement only runs only if it meets these two conditions,
+                                                                          //instead of having an if statement in an if statement, it can be simplified with && which checks if both conditions are met in a line)
         {
             defaultName = PlayerPrefs.GetString(playerNamePrefKey);
             mInputField.text = defaultName;
