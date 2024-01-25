@@ -568,6 +568,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123748669}
   m_CullTransparentMesh: 1
+--- !u!1 &139048668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139048670}
+  - component: {fileID: 139048669}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &139048669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139048668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daafc25c1486ad1488070cc7f1b80612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Boid
+    prefab: {fileID: 1138522166324048232, guid: 1b7bb4e6c0d12884c97216ff0bcde98f, type: 3}
+    size: 1500
+  - tag: Predator
+    prefab: {fileID: 389496565818785944, guid: 7bc84c9bd85bd9342ba24c647efb0df1, type: 3}
+    size: 1500
+--- !u!4 &139048670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139048668}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.402512, y: -0.0023861956, z: -0.14998864}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &158806633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1331,8 @@ MonoBehaviour:
   - {fileID: 281999220}
   - {fileID: 1148214724}
   Bounds: {fileID: 735960364}
+  boidTag: Boid
+  predatorTag: Predator
   TickDuration: 1
   TickDurationSeparationEnemy: 0.01
   TickDurationRandom: 1
