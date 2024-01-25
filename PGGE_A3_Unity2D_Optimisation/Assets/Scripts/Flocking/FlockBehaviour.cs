@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -154,15 +155,16 @@ public class FlockBehaviour : MonoBehaviour
         Vector3 steerPos = Vector3.zero;
 
         Autonomous curr = flock.mAutonomous[i];
-        for (int j = 0; j < flock.numBoids; ++j)
+
+        Parallel.For(0, flock.numBoids, j =>
         {
             Autonomous other = flock.mAutonomous[j];
-            float dist = (curr.transform.position - other.transform.position).magnitude;
+            float dist = (curr.updatedPos - other.updatedPos).magnitude;
             if (i != j && dist < flock.visibility)
             {
                 speed += other.Speed;
                 flockDir += other.TargetDirection;
-                steerPos += other.transform.position;
+                steerPos += other.updatedPos;
                 count++;
             }
             if (i != j)
@@ -170,14 +172,15 @@ public class FlockBehaviour : MonoBehaviour
                 if (dist < flock.separationDistance)
                 {
                     Vector3 targetDirection = (
-                      curr.transform.position -
-                      other.transform.position).normalized;
+                      curr.updatedPos -
+                      other.updatedPos).normalized;
 
                     separationDir += targetDirection;
                     separationSpeed += dist * flock.weightSeparation;
                 }
             }
-        }
+        });
+
         if (count > 0)
         {
             speed = speed / count;
@@ -232,18 +235,18 @@ public class FlockBehaviour : MonoBehaviour
       float sepDist,
       float sepWeight)
     {
-        for (int i = 0; i < boids.Count; ++i)
+        Parallel.For(0, boids.Count, i =>
         {
-            for (int j = 0; j < enemies.Count; ++j)
+            Parallel.For(0, enemies.Count, j =>
             {
                 float dist = (
-                  enemies[j].transform.position -
-                  boids[i].transform.position).magnitude;
+                  enemies[j].updatedPos -
+                  boids[i].updatedPos).magnitude;
                 if (dist < sepDist)
                 {
                     Vector3 targetDirection = (
-                      boids[i].transform.position -
-                      enemies[j].transform.position).normalized;
+                      boids[i].updatedPos -
+                      enemies[j].updatedPos).normalized;
 
                     boids[i].TargetDirection += targetDirection;
                     boids[i].TargetDirection.Normalize();
@@ -251,8 +254,8 @@ public class FlockBehaviour : MonoBehaviour
                     boids[i].TargetSpeed += dist * sepWeight;
                     boids[i].TargetSpeed /= 2.0f;
                 }
-            }
-        }
+            });
+        });
     }
 
     IEnumerator Coroutine_SeparationWithEnemies()
