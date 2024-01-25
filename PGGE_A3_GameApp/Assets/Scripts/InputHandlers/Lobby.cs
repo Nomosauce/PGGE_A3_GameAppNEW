@@ -16,7 +16,7 @@ public class Lobby : MonoBehaviour
 
     public void OnClickLobbyBack()
     {
-        if (!lobbyBtnPressed)
+        if (!lobbyBtnPressed) //plays the couroutine if its not already operating/after its done operating
         {
             StartCoroutine(PlayLobbyBackSFX());
             lobbyBtnPressed = true;

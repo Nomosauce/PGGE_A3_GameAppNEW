@@ -17,14 +17,14 @@ public class Menu : MonoBehaviour
 
     public void OnClickSinglePlayer()
     {
-        if (!menuBtnPressed)
+        if (!menuBtnPressed) //plays the couroutine if its not already operating/after its done operating
         {
-            StartCoroutine(PlaySinglePlayerSFX());
+            StartCoroutine(PlaySinglePlayerSFX()); 
             menuBtnPressed = true;
         }
     }
 
-    public IEnumerator PlaySinglePlayerSFX()
+    public IEnumerator PlaySinglePlayerSFX() //delays the scene loading to be after the sound is played to avoid the sound being cut off as soon as the scene changes normally
     {
         singlePlayerBtnSFX.Play();
         yield return new WaitForSeconds(0.1f);
@@ -33,14 +33,14 @@ public class Menu : MonoBehaviour
 
     public void OnClickMultiPlayer()
     {
-        if (!menuBtnPressed)
+        if (!menuBtnPressed) //plays the couroutine if its not already operating/after its done operating
         {
             StartCoroutine(PlayMultiPlayerSFX());
             menuBtnPressed = true;
         }
     }
 
-    public IEnumerator PlayMultiPlayerSFX()
+    public IEnumerator PlayMultiPlayerSFX() //delays the scene loading to be after the sound is played to avoid the sound being cut off as soon as the scene changes normally
     {
         multiPlayerBtnSFX.Play();
         yield return new WaitForSeconds(0.1f);

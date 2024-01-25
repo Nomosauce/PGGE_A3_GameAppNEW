@@ -18,6 +18,7 @@ namespace PGGE
             public GameObject mBtnJoinRoom;
             public GameObject mInpPlayerName;
 
+            //Q3 back to lobby button
             public GameObject BtnLobbyBack;
 
             bool isConnecting = false;
@@ -41,13 +42,13 @@ namespace PGGE
 
             public void Connect()
             {
-                lobbyJoinSFX.Play();
+                lobbyJoinSFX.Play(); //plays this on loop (checked on audio source) while the player is still connecting
 
                 mBtnJoinRoom.SetActive(false);
                 mInpPlayerName.SetActive(false);
                 mConnectionProgress.SetActive(true);
 
-                BtnLobbyBack.SetActive(false);
+                BtnLobbyBack.SetActive(false); //deactivated the back button so the player cannot go back to menu while theyre connecting to a lobby (to avoid bugs)
 
                 // we check if we are connected or not, we join if we are, 
                 // else we initiate the connection to the server.
